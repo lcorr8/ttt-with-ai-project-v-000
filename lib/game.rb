@@ -97,8 +97,66 @@ def winner
 end
 
 def turn
-  puts ""
+  input = self.current_player.move(self.board)
+  #binding.pry
+  if self.board.valid_move?(input)
+    board.update(input,self.current_player)
+    
+  else
+    self.turn
+  end
+  board.display
+  #board.cells
 end
+=begin
+  input = nil
+  until self.board.valid_move?(input)
+    puts "Please choose a valid spot"
+    input= self.current_player.move(self.board.cells)
+    break if self.board.valid_move?(input) #why does this not wor without a break?
+      self.board.update(input,self.current_player)
+      self.board.display
+      binding.pry
+  end
+end
+=end
+
+ # puts "Your turn, choose a spot"
+  #input= self.current_player.move(self.board.cells)
+=begin
+  if self.board.valid_move?(input)
+    update(input,self.current_player)
+    self.board.display
+  else
+
+    until self.board.valid_move?(input)
+      puts "Please choose a valid spot"
+      input= self.current_player.move(self.board.cells)
+    end
+    update(input,self.current_player)
+    self.board.display
+    binding.pry
+  end
+=end  
+  
+  #call move method comp/person
+
+def play
+  until self.over? 
+    self.turn
+    end
+
+   if self.won?
+      puts "Congratulations #{self.winner}!"
+    elsif self. draw?
+    puts "Cats Game!"
+    end
+  
+    #binding.pry
+
+  
+end
+
 
 
 end  
