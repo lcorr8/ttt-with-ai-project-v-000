@@ -62,7 +62,7 @@ class Game
 =end  
       
   def draw?
-    !(self.won?) && self.board.full?
+   self.board.full? && !(self.won?) 
     #binding.pry
   end    
 =begin
@@ -84,7 +84,6 @@ class Game
 def won?
     WIN_COMBINATIONS.detect do |line|
       line.all?{|i| self.board.cells[i] == "X" } || line.all?{|i| self.board.cells[i] == "O"}
-
     end
 
   end
@@ -101,11 +100,11 @@ def turn
   #binding.pry
   if self.board.valid_move?(input)
     board.update(input,self.current_player)
-    
+      board.display
+
   else
     self.turn
   end
-  board.display
   #board.cells
 end
 =begin
@@ -142,13 +141,15 @@ end
   #call move method comp/person
 
 def play
+  self.board.display
   until self.over? 
     self.turn
     end
 
-   if self.won?
+   if won?
       puts "Congratulations #{self.winner}!"
-    elsif self. draw?
+    end
+  if draw?
     puts "Cats Game!"
     end
   
