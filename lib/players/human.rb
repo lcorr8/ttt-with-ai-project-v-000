@@ -5,18 +5,7 @@ class Human < Player
 
   def move(board)
     puts "Your turn! choose a cell number:"
-    input = gets
-    #token = self.token
-    #if Board.valid_move?(input)
-      #update(input,token)
-    #else
-      #until Board.valid_move?(input)
-      #puts "Please select an empty cell in range 1-9"
-      #input = gets.strip 
-      #binding.pry
-      #end
-    #end 
-    input
+    input = gets.strip
   end
   
 

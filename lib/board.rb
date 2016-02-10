@@ -4,13 +4,12 @@ class Board
 
   attr_accessor :cells
 
-  def initialize
-    @cells = Array.new(9, " ")
+  def initialize(cells = Array.new(9, " "))
+    @cells = cells
   end  
 
   def reset!
     self.cells = Array.new(9, " ")
-    #binding.pry
   end
 
   def display
@@ -28,6 +27,7 @@ class Board
 
   def full?
    self.cells.none?{|x| x == " "} 
+   #   !(cells.include?(" "))
   end
 
   def turn_count #(refactor)
@@ -40,6 +40,8 @@ class Board
       end
     end
     counter
+    #empty_cells = cells.select {|cell| cell == " "}
+    #turns_completed = (9 - empty_cells.length)
   end
 
   def taken?(input)
@@ -53,10 +55,6 @@ class Board
 
   def update(input,player)
     self.cells[input.to_i-1] = player.token
-    #binding.pry
   end
-
-
-
 
 end
