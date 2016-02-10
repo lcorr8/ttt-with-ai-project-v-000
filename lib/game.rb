@@ -71,6 +71,8 @@ def turn
   input = self.current_player.move(self.board)
   if self.board.valid_move?(input)
     board.update(input,self.current_player)
+  elsif input == "exit" 
+    exit 0 
   else
     self.turn
   end
