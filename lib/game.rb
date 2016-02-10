@@ -58,7 +58,7 @@ def won?
     WIN_COMBINATIONS.detect do |line|
       line.all?{|i| self.board.cells[i] == "X" } || line.all?{|i| self.board.cells[i] == "O"}
     end
-  end
+end
 
 def winner
   if won?
@@ -76,30 +76,20 @@ def turn
   end
   self.board.display
   puts "#{self.previous_player.token} has moved to cell #{input}."
+  puts "_" * 45
+  puts "\n"
 end
-=begin
-  input = nil
-  until self.board.valid_move?(input)
-    puts "Please choose a valid spot"
-    input= self.current_player.move(self.board.cells)
-    break if self.board.valid_move?(input) #why does this not wor without a break?
-      self.board.update(input,self.current_player)
-      self.board.display
-      binding.pry
-  end
-end
-=end
+
 
   def play
-    until self.over? 
+    while !self.over? 
      self.turn
-     #self.won?
     end
-    if won?
+    if won? 
       puts "Congratulations #{self.winner}!"
     elsif draw?
       puts "Cats Game!"
-    end 
+    end
   end
 
 

@@ -11,20 +11,26 @@ if game_type == "0"
   game = Game.new(player_1=Computer.new("X"),player_2=Computer.new("O"))
 
 elsif game_type == "1"
-  puts "Who should go first and be X ?: human, or computer?"
+  puts "_" * 45
+  puts "\n"
+  puts "Player 1 will be X, and Player 2 will be O."
+  puts "Who is player 1: human, or computer?"
   first_player = gets.strip.downcase
     if first_player == "human"
       game = Game.new(player_1=Human.new("X"),player_2=Computer.new("O"))
     elsif first_player == "computer"
       game = Game.new(player_1=Computer.new("X"),player_2=Human.new("O"))
     else
-      puts "Your loss, computer will go first"
-      game = Game.new(player_1=Computer.new("X"),player_2=Human.new("O"))  
+      puts "You didn't enter 'human' or 'computer,' so the computer will go first!" 
+      game = Game.new(player_1=Computer.new("X"),player_2=Human.new("O"))
     end  
 elsif game_type == "2"
   game = Game.new
 end
 
-until game.over?
-  game.play
-end
+  game.board.display
+  puts "_" * 45
+  puts "\n"
+  until game.over?
+    game.play
+  end

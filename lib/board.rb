@@ -42,6 +42,7 @@ class Board
     counter
     #empty_cells = cells.select {|cell| cell == " "}
     #turns_completed = (9 - empty_cells.length)
+
   end
 
   def taken?(input)
@@ -50,7 +51,7 @@ class Board
   end
 
   def valid_move?(input)
-    input.to_i.between?(1,9) && self.taken?(input) == false
+    input.to_i.between?(1,9) && !taken?(input)
   end
 
   def update(input,player)
