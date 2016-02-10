@@ -31,22 +31,26 @@ class Board
   end
 
   def turn_count #(refactor)
-    counter = 0
-    self.cells.each do |position|
-      if position == "X" || position == "O"
-        counter += 1
-      else
-        counter = counter
-      end
-    end
-    counter
+    #counter = 0
+    #self.cells.each do |position|
+      #if position == "X" || position == "O"
+        #counter += 1
+      #else
+        #counter = counter
+      #end
+    #end
+    #counter
+    #############################
     #empty_cells = cells.select {|cell| cell == " "}
     #turns_completed = (9 - empty_cells.length)
+    #############################
+    turn_count = 9 - (cells.count(" ")) 
+      #bindin.pry
+
   end
 
   def taken?(input)
   self.cells[input.to_i-1] == "X" || self.cells[input.to_i-1] == "O"
-    
   end
 
   def valid_move?(input)
